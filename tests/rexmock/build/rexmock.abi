@@ -1,0 +1,192 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
+    "version": "eosio::abi/1.1",
+    "types": [],
+    "structs": [
+        {
+            "name": "buyrex",
+            "base": "",
+            "fields": [
+                {
+                    "name": "from",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "deposit",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "pair_time_point_sec_int64",
+            "base": "",
+            "fields": [
+                {
+                    "name": "first",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "second",
+                    "type": "int64"
+                }
+            ]
+        },
+        {
+            "name": "resetstat",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "rex_balance",
+            "base": "",
+            "fields": [
+                {
+                    "name": "version",
+                    "type": "uint8"
+                },
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "vote_stake",
+                    "type": "asset"
+                },
+                {
+                    "name": "rex_balance",
+                    "type": "asset"
+                },
+                {
+                    "name": "matured_rex",
+                    "type": "int64"
+                },
+                {
+                    "name": "rex_maturities",
+                    "type": "pair_time_point_sec_int64[]"
+                }
+            ]
+        },
+        {
+            "name": "rex_fund",
+            "base": "",
+            "fields": [
+                {
+                    "name": "version",
+                    "type": "uint8"
+                },
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "balance",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "sellrex",
+            "base": "",
+            "fields": [
+                {
+                    "name": "from",
+                    "type": "name"
+                },
+                {
+                    "name": "rex",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "stats",
+            "base": "",
+            "fields": [
+                {
+                    "name": "eos_price",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "withdraw",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "name": "buyrex",
+            "type": "buyrex",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "deposit",
+            "type": "deposit",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "resetstat",
+            "type": "resetstat",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "sellrex",
+            "type": "sellrex",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "withdraw",
+            "type": "withdraw",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "rexbal",
+            "type": "rex_balance",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "rexfund",
+            "type": "rex_fund",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "rexstat",
+            "type": "stats",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": []
+}

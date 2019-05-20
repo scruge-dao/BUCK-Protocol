@@ -1,0 +1,19 @@
+{
+  "main": "src/rexmock.cpp",
+  "contract": "rexmock",
+  "include": "",
+  "cdt": "",
+  "output": "",
+  "scripts": {
+    "build": ""
+  },
+  "deploy": {
+    "mainnet": "",
+    "kylin": "",
+    "jungle": "rexrexrexrex",
+    "local": ""
+  },
+  "test": {
+    "npmClient": ""
+  }
+}
