@@ -1,0 +1,611 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
+    "version": "eosio::abi/1.1",
+    "types": [],
+    "structs": [
+        {
+            "name": "account",
+            "base": "",
+            "fields": [
+                {
+                    "name": "balance",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "cdp",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "icr",
+                    "type": "uint16"
+                },
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "debt",
+                    "type": "asset"
+                },
+                {
+                    "name": "collateral",
+                    "type": "asset"
+                },
+                {
+                    "name": "modified_round",
+                    "type": "uint32"
+                },
+                {
+                    "name": "maturity",
+                    "type": "time_point_sec"
+                }
+            ]
+        },
+        {
+            "name": "change",
+            "base": "",
+            "fields": [
+                {
+                    "name": "cdp_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "change_debt",
+                    "type": "asset"
+                },
+                {
+                    "name": "change_collateral",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "changeicr",
+            "base": "",
+            "fields": [
+                {
+                    "name": "cdp_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "icr",
+                    "type": "uint16"
+                }
+            ]
+        },
+        {
+            "name": "close",
+            "base": "",
+            "fields": [
+                {
+                    "name": "cdp_id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "close_req",
+            "base": "",
+            "fields": [
+                {
+                    "name": "cdp_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "debt",
+                    "type": "asset"
+                },
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "timestamp",
+                    "type": "time_point"
+                }
+            ]
+        },
+        {
+            "name": "currency_stats",
+            "base": "",
+            "fields": [
+                {
+                    "name": "supply",
+                    "type": "asset"
+                },
+                {
+                    "name": "max_supply",
+                    "type": "asset"
+                },
+                {
+                    "name": "issuer",
+                    "type": "name"
+                },
+                {
+                    "name": "oracle_timestamp",
+                    "type": "time_point"
+                },
+                {
+                    "name": "oracle_eos_price",
+                    "type": "uint32"
+                },
+                {
+                    "name": "processing_status",
+                    "type": "uint8"
+                },
+                {
+                    "name": "operation_status",
+                    "type": "uint8"
+                }
+            ]
+        },
+        {
+            "name": "exchange",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "forceupdate",
+            "base": "",
+            "fields": [
+                {
+                    "name": "eos_price",
+                    "type": "uint32"
+                }
+            ]
+        },
+        {
+            "name": "freeram",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "fund",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "balance",
+                    "type": "asset"
+                },
+                {
+                    "name": "exchange_balance",
+                    "type": "asset"
+                },
+                {
+                    "name": "savings_balance",
+                    "type": "int64"
+                },
+                {
+                    "name": "matured_rex",
+                    "type": "int64"
+                },
+                {
+                    "name": "rex_maturities",
+                    "type": "pair_time_point_sec_int64[]"
+                }
+            ]
+        },
+        {
+            "name": "open",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                },
+                {
+                    "name": "dcr",
+                    "type": "uint16"
+                },
+                {
+                    "name": "icr",
+                    "type": "uint16"
+                }
+            ]
+        },
+        {
+            "name": "order",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                },
+                {
+                    "name": "timestamp",
+                    "type": "time_point"
+                }
+            ]
+        },
+        {
+            "name": "pair_time_point_sec_int64",
+            "base": "",
+            "fields": [
+                {
+                    "name": "first",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "second",
+                    "type": "int64"
+                }
+            ]
+        },
+        {
+            "name": "processrex",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "redeem",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "redeem_req",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                },
+                {
+                    "name": "timestamp",
+                    "type": "time_point"
+                }
+            ]
+        },
+        {
+            "name": "reparam_req",
+            "base": "",
+            "fields": [
+                {
+                    "name": "cdp_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "change_collateral",
+                    "type": "asset"
+                },
+                {
+                    "name": "change_debt",
+                    "type": "asset"
+                },
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "timestamp",
+                    "type": "time_point"
+                },
+                {
+                    "name": "maturity",
+                    "type": "time_point_sec"
+                }
+            ]
+        },
+        {
+            "name": "run",
+            "base": "",
+            "fields": [
+                {
+                    "name": "max",
+                    "type": "uint8"
+                }
+            ]
+        },
+        {
+            "name": "save",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "setoperation",
+            "base": "",
+            "fields": [
+                {
+                    "name": "level",
+                    "type": "uint8"
+                }
+            ]
+        },
+        {
+            "name": "taxation_stats",
+            "base": "",
+            "fields": [
+                {
+                    "name": "insurance_pool",
+                    "type": "asset"
+                },
+                {
+                    "name": "collected_excess",
+                    "type": "asset"
+                },
+                {
+                    "name": "total_excess",
+                    "type": "uint64"
+                },
+                {
+                    "name": "aggregated_excess",
+                    "type": "uint128"
+                },
+                {
+                    "name": "savings_pool",
+                    "type": "asset"
+                },
+                {
+                    "name": "collected_savings",
+                    "type": "asset"
+                },
+                {
+                    "name": "savings_supply",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "transfer",
+            "base": "",
+            "fields": [
+                {
+                    "name": "from",
+                    "type": "name"
+                },
+                {
+                    "name": "to",
+                    "type": "name"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                },
+                {
+                    "name": "memo",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "unsave",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "quantity",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "update",
+            "base": "",
+            "fields": [
+                {
+                    "name": "eos_price",
+                    "type": "uint32"
+                }
+            ]
+        },
+        {
+            "name": "withdraw",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "name": "change",
+            "type": "change",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "changeicr",
+            "type": "changeicr",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "close",
+            "type": "close",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "exchange",
+            "type": "exchange",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "forceupdate",
+            "type": "forceupdate",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "freeram",
+            "type": "freeram",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "open",
+            "type": "open",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "processrex",
+            "type": "processrex",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "redeem",
+            "type": "redeem",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "run",
+            "type": "run",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "save",
+            "type": "save",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "setoperation",
+            "type": "setoperation",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "transfer",
+            "type": "transfer",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "unsave",
+            "type": "unsave",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "update",
+            "type": "update",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "withdraw",
+            "type": "withdraw",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "accounts",
+            "type": "account",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "cdp",
+            "type": "cdp",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "closereq",
+            "type": "close_req",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "exchange",
+            "type": "order",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "fund",
+            "type": "fund",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "redeemreq",
+            "type": "redeem_req",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "reparamreq",
+            "type": "reparam_req",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "stat",
+            "type": "currency_stats",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "taxation",
+            "type": "taxation_stats",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": []
+}
