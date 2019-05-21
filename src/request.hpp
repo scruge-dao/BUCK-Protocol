@@ -58,7 +58,7 @@ void buck::change(uint64_t cdp_id, const asset& change_debt, const asset& change
     check(dcr >= CR, "can not reparametrize dcr below CR");
   }
   
-  check(new_debt >= MIN_DEBT || new_debt.amount == 0, "can not reparametrize debt below the limit");
+  check(new_debt >= MIN_DEBT || (new_debt.amount == 0 && cdp_itr->icr > 0), "can not reparametrize debt below the limit");
   
   const auto min_collateral = convert(MIN_COLLATERAL.amount, true);
   check(new_collateral.amount >= min_collateral, "can not reparametrize collateral below the limit");
