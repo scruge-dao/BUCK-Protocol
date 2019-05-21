@@ -94,8 +94,8 @@ void buck::run_exchange(uint8_t max) {
     const asset eos = asset(eos_amount, EOS);
     
     // update balances
-    add_balance(sell_itr->account, buck, same_payer);
-    add_exchange_funds(buy_itr->account, eos, same_payer);
+    add_balance(buy_itr->account, buck, same_payer);
+    add_exchange_funds(sell_itr->account, eos, same_payer);
     
     // update orders
     if (sell_itr->quantity.amount == buck.amount) {
