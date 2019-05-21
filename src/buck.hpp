@@ -192,7 +192,7 @@ CONTRACT buck : public contract {
         
         if (icr == 0 || collateral.amount == 0) return 999999999999; // end of the table
         
-        if (debt.amount == 0) return double(icr) / double(collateral.amount); // descending c/icr
+        if (debt.amount <= MIN_DEBT.amount) return double(icr) / double(collateral.amount); // descending c/icr
 
         const double cd = double(collateral.amount) / double(debt.amount);
         return MAX_ICR / MIN_COLLATERAL.amount + 1 + icr / cd; // descending cd/icr
