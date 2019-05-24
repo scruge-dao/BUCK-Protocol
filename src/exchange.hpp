@@ -2,6 +2,26 @@
 // This file is part of BUCK Protocol.
 // Created by Yaroslav Erohin and Dmitry Morozov.
 
+void buck::cancelorder(const name& account) {
+  require_auth(account);
+  
+  check(check_operation_status(5), "exchange has been temporarily frozen");
+  const auto ex_itr = _exchange.require_find(account.value, "you don't have an exchange order");
+  
+  // return order
+  if (ex_itr->quantity.symbol == BUCK) {
+    add_balance(account, ex_itr->quantity, account);
+  }
+  else {
+    add_exchange_funds(account, ex_itr->quantity, account);
+  }
+  
+  // remove order
+  _exchange.erase(ex_itr);
+  
+  run(10);   
+}
+
 void buck::exchange(const name& account, const asset quantity) {
   require_auth(account);
   

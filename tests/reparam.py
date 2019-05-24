@@ -180,18 +180,18 @@ class Test(unittest.TestCase):
 		
 		transfer(eosio_token, user1, buck, "10.0000 EOS", "deposit")
 		
-		# mature rex
-		time += 500_000
+		open(buck, user1, 1000, 1000, "10000.0000 REX")
+
+		time += 1
 		maketime(buck, time)
 		update(buck, 100)
 
-		open(buck, user1, 1000, 0, "10000.0000 REX")
+		table(buck, "cdp", limit=15)
 
-		assertRaises(self, lambda: reparam(buck, user1, 10, "-1000.0001 BUCK", "0.0000 REX"))
+		# additional tax 0.0001
+		assertRaisesMessage(self, "can not reparametrize debt below the limit", lambda: reparam(buck, user1, 10, "-1000.0002 BUCK", "0.0000 REX"))
+		reparam(buck, user1, 10, "-1000.0001 BUCK", "0.0000 REX")
 
-		reparam(buck, user1, 10, "-1000.0000 BUCK", "0.0000 REX")
-
-		# mature rex
 		time += 100
 		maketime(buck, time)
 		update(buck, 100)

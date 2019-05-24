@@ -100,6 +100,15 @@ class Test(unittest.TestCase):
 		# get rid of the rest of the bucks
 		transfer(buck, user1, master, balance(buck, user1, unwrap=False), "")
 
+		# sellers
+		self.assertEqual(0, fundexbalance(buck, user1))
+		self.assertEqual(0, fundexbalance(buck, user4))
+
+		# buyers
+		self.assertEqual(0, balance(buck, user2))
+		self.assertEqual(0, balance(buck, user3))
+
+
 		# run exchange
 		maketime(buck, 4_000_000)
 		update(buck)
@@ -116,13 +125,14 @@ class Test(unittest.TestCase):
 		self.assertEqual(500, amount(ex["quantity"]))
 		self.assertEqual("user4", ex["account"])
 
+
 		# sellers
-		self.assertEqual(2500, balance(buck, user1))
-		self.assertEqual(1500, balance(buck, user4))
+		self.assertEqual(1250, fundexbalance(buck, user1))
+		self.assertEqual(750, fundexbalance(buck, user4))
 
 		# buyers
-		self.assertEqual(1000, fundexbalance(buck, user2))
-		self.assertEqual(1000, fundexbalance(buck, user3))
+		self.assertEqual(2000, balance(buck, user2))
+		self.assertEqual(2000, balance(buck, user3))
 
 
 

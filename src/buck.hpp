@@ -19,6 +19,8 @@ CONTRACT buck : public contract {
     ACTION unsave(const name& account, const uint64_t quantity);
     ACTION exchange(const name& account, const asset quantity);
     ACTION freeram(const name& account);
+    ACTION cancelorder(const name& account);
+    ACTION removedebt(uint64_t cdp_id);
     ACTION run(uint8_t max);
     
     // admin
@@ -134,8 +136,10 @@ CONTRACT buck : public contract {
     };
     
     struct processing {
-      /// The code of this struct has been temporarily removed in order to protect intellectual property. 
-      /// Once the protocol will be used by several hundred users, the code wil be uploaded.
+      asset current_balance;
+      name  account;
+      
+      uint64_t primary_key() const { return 0; }
     };
     
     TABLE order {
@@ -190,9 +194,10 @@ CONTRACT buck : public contract {
       // index to search for liquidators with the highest ability to bail out bad debt
       double liquidator() const {
         
-        if (icr == 0 || collateral.amount == 0) return 999999999999; // end of the table
+        if (icr == 0 || collateral.amount == 0) return std::numeric_limits<double>::infinity(); // end of the table
         
-        if (debt.amount <= MIN_DEBT.amount) return double(icr) / double(collateral.amount); // descending c/icr
+        if (debt <= MIN_DEBT && collateral > MIN_INSURER_REX) 
+          return double(icr) / double(collateral.amount); // descending c/icr
 
         const double cd = double(collateral.amount) / double(debt.amount);
         return MAX_ICR / MIN_COLLATERAL.amount + 1 + icr / cd; // descending cd/icr
@@ -201,7 +206,7 @@ CONTRACT buck : public contract {
       // index to search for debtors with lowest dcr
       double debtor() const {
         
-        if (debt.amount == 0 || collateral.amount == 0) return 999999999999; // end of the table
+        if (debt.amount == 0 || collateral.amount == 0) return std::numeric_limits<double>::infinity(); // end of the table
         
         const double cd = double(collateral.amount) / double(debt.amount);
         return cd; // ascending cd
@@ -303,6 +308,7 @@ CONTRACT buck : public contract {
     void set_liquidation_status(LiquidationStatus status);
     void set_processing_status(ProcessingStatus status);
     
+    void change(uint64_t cdp_id, const asset& change_debt, const asset& change_collateral, bool force_accrue);
     inline void inline_transfer(const name& account, const asset& quantity, const std::string& memo, const name& contract);
     
     void buy_rex(const name& account, const asset& quantity);

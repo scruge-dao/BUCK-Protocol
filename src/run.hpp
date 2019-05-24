@@ -291,6 +291,7 @@ void buck::run_liquidation(uint8_t max) {
     
     if (debtor_itr->debt.amount == 0) {
       set_liquidation_status(LiquidationStatus::liquidation_complete);
+      run_requests(max - processed);
       return;
     }
     
@@ -301,6 +302,7 @@ void buck::run_liquidation(uint8_t max) {
     if (debtor_dcr >= CR) {
       
       set_liquidation_status(LiquidationStatus::liquidation_complete);
+      run_requests(max - processed);
       return;
     }
     
@@ -308,6 +310,7 @@ void buck::run_liquidation(uint8_t max) {
     if (liquidator_itr->icr == 0) {
       
       set_liquidation_status(LiquidationStatus::failed);
+      run_requests(max - processed);
       return;
     }
     
@@ -326,6 +329,7 @@ void buck::run_liquidation(uint8_t max) {
     
     if (liquidator_dcr < CR || liquidator_debt > 0 && liquidator_dcr <= liquidator_icr) {
       set_liquidation_status(LiquidationStatus::failed);
+      run_requests(max - processed);
       return;
     }
     

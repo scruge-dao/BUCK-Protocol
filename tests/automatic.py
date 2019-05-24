@@ -155,7 +155,7 @@ class Test(unittest.TestCase):
 				# match buck supply
 				supply = amount(table(buck, "stat", "BUCK", element="supply"))
 				user_balance = balance(buck, "user1")
-				scruge_balance = balance(buck, "scrugescruge")
+				scruge_balance = balance(buck, "equityscruge")
 				collected_savings = amount(taxation["collected_savings"])
 				savings_pool = amount(taxation["savings_pool"])
 				locked_in_requests = self.get_locked_in_requests_tokens()

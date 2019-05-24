@@ -31,7 +31,17 @@ void buck::cancel_previous_requests(uint64_t cdp_id) {
   }
 }
 
+void buck::removedebt(uint64_t cdp_id) {
+  const auto cdp_itr = _cdp.require_find(cdp_id, "debt position does not exist");
+  accrue_interest(cdp_itr, true);
+  change(cdp_id, -cdp_itr->debt, ZERO_REX, false);
+}
+
 void buck::change(uint64_t cdp_id, const asset& change_debt, const asset& change_collateral) {
+  change(cdp_id, change_debt, change_collateral, true);
+}
+
+void buck::change(uint64_t cdp_id, const asset& change_debt, const asset& change_collateral, bool force_accrue) {
   check(check_operation_status(0), "cdp operations have been temporarily frozen");
   
   check(change_debt.is_valid(), "invalid debt quantity");
@@ -48,7 +58,7 @@ void buck::change(uint64_t cdp_id, const asset& change_debt, const asset& change
   cancel_previous_requests(cdp_itr->id);
 
   // start with new request
-  accrue_interest(cdp_itr, true);
+  accrue_interest(cdp_itr, force_accrue);
   
   const asset new_debt = cdp_itr->debt + change_debt;
   const asset new_collateral = cdp_itr->collateral + change_collateral;
