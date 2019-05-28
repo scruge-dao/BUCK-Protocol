@@ -22,7 +22,7 @@ oracle_time = 0
 
 MIN_DEBT = 10_0000
 MIN_COLLATERAL = 5_0000
-MIN_INSURER_REX = 15_0000_0000
+MIN_INSURER_REX = 5_0000_0000
 
 def time_now():
 	global time

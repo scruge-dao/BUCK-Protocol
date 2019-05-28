@@ -115,8 +115,11 @@ class Test(unittest.TestCase):
 		##############################
 		COMMENT("Take")
 
+		fundbalance(buck, user1)
+
 		unsave(buck, user1, 10000)
-		unsave(buck, user2, 1408)
+		table(buck, "taxation")
+		unsave(buck, user2, 792)
 
 		##############################
 		COMMENT("Match")

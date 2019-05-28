@@ -213,8 +213,8 @@ class Test(unittest.TestCase):
 			self.match(cdp, liquidator)
 
 	def match(self, cdp, row):
-		# print(cdp)
-		# print("#" + str(row["id"]), row["collateral"], row["debt"], row["acr"])
+		print(cdp)
+		print("#" + str(row["id"]), row["collateral"], row["debt"], row["icr"])
 
 		self.assertEqual(cdp.id, row["id"], "attempt to match different CDPs")
 		self.assertEqual(cdp.acr, row["icr"], "ACRs don't match")		

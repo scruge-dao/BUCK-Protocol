@@ -100,10 +100,6 @@ class Test(unittest.TestCase):
 
 		self.assertEqual(0, fundbalance(buck, user1))
 
-		time += 500_000
-		maketime(buck, time)
-		update(buck)
-
 		close(buck, user1, 0)
 		table(buck, "closereq")
 
@@ -114,9 +110,7 @@ class Test(unittest.TestCase):
 		cdp = table(buck, "cdp")
 
 		self.assertEqual(0, len(table(buck, "closereq")))
-
-		self.assertLess(9999, fundbalance(buck, user1))
-		self.assertGreater(10000, fundbalance(buck, user1))
+		self.assertEqual(10000, fundbalance(buck, user1))
 
 
 
