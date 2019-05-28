@@ -24,22 +24,29 @@ static const asset& ZERO_EOS   = asset(0, EOS);
 static const time_point_sec FAR_PAST = time_point_sec(0);
 
 /// maximum ratio for ICR (%)
-const uint64_t MAX_ICR = 1000;   
+const uint64_t MAX_ICR = 1000;
 
 /// max % of price change available to oracle
 static const uint8_t ORACLE_MAX_PERCENT = 8;
 
-/// minimam collateral to become an insurer (~15 EOS)
-static const asset MIN_INSURER_REX = asset(15'0000'0000, REX);
+/// minimum amounts to use in exchange
+static const asset MIN_EXCHANGE_EOS = asset(1'0000, EOS);
+static const asset MIN_EXCHANGE_BUCK = asset(5'0000, BUCK);
+
+/// minimum amount to put in savings
+static const asset MIN_SAVINGS = asset(1'0000, BUCK);
+
+/// minimam collateral to become an insurer (~5 EOS)
+static const asset MIN_INSURER_REX = asset(5'0000'0000, REX);
+
+/// minimal cdp debt is 10 BUCK
+static const asset& MIN_DEBT       = asset(10'0000, BUCK);
 
 /// minimal collateral is 5 EOS
 static const asset& MIN_COLLATERAL = asset(5'0000, EOS);
 
 /// minimal amount to redeem
 static const asset& MIN_REDEMPTION = asset(10'0000, BUCK);
-
-/// minimal cdp debt is 50 BUCK
-static const asset& MIN_DEBT       = asset(10'0000, BUCK);
 
 static const name& EOSIO_TOKEN = "eosio.token"_n;
 static const name& EOSIO       = "eosio"_n;

@@ -36,11 +36,11 @@ void buck::exchange(const name& account, const asset quantity) {
   
   // take tokens
   if (quantity.symbol == BUCK) {
-    check(quantity.amount >= 25'0000, "minimum amount is 25 BUCK");
+    check(quantity >= MIN_EXCHANGE_BUCK, "minimum amount is 5 BUCK");
     sub_balance(account, quantity);
   }
   else {
-    check(quantity.amount >= 5'0000, "minimum amount is 5 EOS");
+    check(quantity >= MIN_EXCHANGE_EOS, "minimum amount is 1 EOS");
     sub_exchange_funds(account, quantity);
   }
   

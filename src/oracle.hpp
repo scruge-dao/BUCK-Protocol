@@ -14,7 +14,7 @@ bool buck::check_operation_status(uint8_t task_number) const {
 }
 
 void buck::forceupdate(uint32_t eos_price) {
-  require_auth(permission_level(_self, "admin"_n));
+  require_auth(_self);
   _update(eos_price, true);
 }
 
